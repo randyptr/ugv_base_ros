@@ -315,7 +315,6 @@ String jsonFeedbackWeb = "";
 float __kp = 20.0;
 float __ki = 120.0;
 float __kd = 0;
-float windup_limits = 255;
 
 
 //  --- --- --- ugv base --- --- ---
