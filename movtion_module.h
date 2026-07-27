@@ -366,9 +366,11 @@ void setGoalSpeed(float inputLeft, float inputRight) {
 
   if (nextSetpointA == 0 || (setpointA < 0 && nextSetpointA > 0) || (setpointA > 0 && nextSetpointA < 0)) {
     resetLeftSpeedEstimate();
+    pidA.Start(speedFilteredA, 0.0, nextSetpointA);   // anti-windup: clear PID integral on stop/reversal
   }
   if (nextSetpointB == 0 || (setpointB < 0 && nextSetpointB > 0) || (setpointB > 0 && nextSetpointB < 0)) {
     resetRightSpeedEstimate();
+    pidB.Start(speedFilteredB, 0.0, nextSetpointB);   // anti-windup: clear PID integral on stop/reversal
   }
 
   setpointA = nextSetpointA;
@@ -417,7 +419,6 @@ void setPID(float inputP, float inputI, float inputD, float inputLimits) {
   __kp = inputP;
   __ki = inputI;
   __kd = inputD;
-  windup_limits = inputLimits;
   pidA.SetTunings(__kp, __ki, __kd);
   pidB.SetTunings(__kp, __ki, __kd);
 }
