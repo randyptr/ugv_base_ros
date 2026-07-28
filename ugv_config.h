@@ -321,7 +321,7 @@ float __kd = 0;
 
 #define THRESHOLD_PWM 23
 
-const double MOTOR_MIN_FEEDFORWARD_PWM = 34.0;
+const double MOTOR_MIN_FEEDFORWARD_PWM = 48.0;   // raised 34->48: break turn-in-place friction immediately (was ~1-2s stall)
 const double MOTOR_SPEED_FEEDFORWARD_PWM = 60.0;
 
 // mainType:01 RaspRover
